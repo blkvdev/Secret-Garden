@@ -1,0 +1,180 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Banco SQLite local: um arquivo só (prisma/dev.db). Sem PostgreSQL e sem Firebase.
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String   @default("Administrador")
+  passwordHash String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  position Int       @default(0)
+  active   Boolean   @default(true)
+  products Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   @default("")
+  price       Float
+  promoPrice  Float?
+  sku         String   @unique
+  stock       Int      @default(0)
+  minStock    Int      @default(3)
+  active      Boolean  @default(true)
+  featured    Boolean  @default(false)
+  bestSeller  Boolean  @default(false)
+  isNew       Boolean  @default(false)
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+
+  images     ProductImage[]
+  orderItems OrderItem[]
+  movements  InventoryMovement[]
+  promotions Promotion[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  url       String
+  position  Int     @default(0)
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+// Banners da página inicial (TOPO = carrossel de ponta a ponta, MEIO = faixa entre as seções)
+model Banner {
+  id         String    @id @default(cuid())
+  title      String    @default("")
+  subtitle   String    @default("")
+  buttonText String    @default("")
+  link       String    @default("")
+  imageUrl   String
+  placement  String    @default("TOPO")
+  position   Int       @default(0)
+  active     Boolean   @default(true)
+  startsAt   DateTime?
+  endsAt     DateTime?
+  createdAt  DateTime  @default(now())
+}
+
+// Promoção com período: desconto em % ou em R$, para produtos escolhidos ou para a loja toda
+model Promotion {
+  id          String    @id @default(cuid())
+  name        String
+  type        String    @default("PERCENT")
+  value       Float
+  startsAt    DateTime
+  endsAt      DateTime
+  active      Boolean   @default(true)
+  allProducts Boolean   @default(false)
+  products    Product[]
+  createdAt   DateTime  @default(now())
+}
+
+model Coupon {
+  id         String    @id @default(cuid())
+  code       String    @unique
+  type       String    @default("PERCENT")
+  value      Float
+  minValue   Float     @default(0)
+  expiresAt  DateTime?
+  usageLimit Int?
+  used       Int       @default(0)
+  active     Boolean   @default(true)
+  createdAt  DateTime  @default(now())
+}
+
+model Order {
+  id            Int       @id @default(autoincrement())
+  customerName  String
+  phone         String?
+  city          String
+  neighborhood  String
+  street        String
+  number        String
+  complement    String?
+  payment       String
+  notes         String?
+  internalNotes String?
+  subtotal      Float
+  discount      Float     @default(0)
+  couponCode    String?
+  shipping      Float
+  total         Float
+  status        String    @default("ENVIADO_WHATSAPP")
+  stockDeducted Boolean   @default(false)
+  soldAt        DateTime?
+
+  items OrderItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     Int
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId   String?
+  product     Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  productName String
+  sku         String
+  quantity    Int
+  unitPrice   Float
+  subtotal    Float
+}
+
+model InventoryMovement {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  change    Int
+  reason    String
+  orderId   Int?
+  createdAt DateTime @default(now())
+}
+
+model DeliveryCity {
+  id     String  @id @default(cuid())
+  name   String  @unique
+  fee    Float
+  active Boolean @default(true)
+}
+
+model StoreSetting {
+  id               String  @id @default("store")
+  storeName        String  @default("Secret Garden")
+  logoUrl          String?
+  announcement     String  @default("")
+  heroTitle        String  @default("Uma flor, mil significados")
+  heroSubtitle     String  @default("Encontre a ideal para o seu momento.")
+  whatsapp         String  @default("")
+  instagram        String  @default("")
+  email            String  @default("")
+  phone            String  @default("")
+  address          String  @default("")
+  mapQuery         String  @default("")
+  hours            String  @default("")
+  pixKey           String  @default("")
+  paymentMethods   String  @default("PIX,Dinheiro,Cartão")
+  whatsappTemplate String  @default("")
+}
