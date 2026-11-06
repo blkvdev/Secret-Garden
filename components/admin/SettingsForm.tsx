@@ -28,21 +28,21 @@ export default function SettingsForm({ initial, defaultTemplate, variables }: { 
 
   return (
     <form onSubmit={save} className="panel">
-      <h2 style={{ marginTop: 0 }}>🏪 Loja</h2>
+      <h2 style={{ marginTop: 0 }}> Loja</h2>
       <div className="form-grid">
         <div className="field span-2"><label>Nome da floricultura</label><input required value={s.storeName} onChange={set('storeName')} /></div>
         <div className="span-2"><ImagePicker label="Logo (vazio = logo padrão Secret Garden). Use PNG com fundo transparente." value={s.logoUrl} onChange={(v) => setS((x) => ({ ...x, logoUrl: v }))} /></div>
-        <div className="field span-2"><label>Faixa de aviso no topo (vazio = esconde)</label><input maxLength={200} placeholder="Frete grátis em Igaraçu do Tietê 🌿" value={s.announcement} onChange={set('announcement')} /></div>
+        <div className="field span-2"><label>Faixa de aviso no topo (vazio = esconde)</label><input maxLength={200} placeholder="Frete grátis em Igaraçu do Tietê " value={s.announcement} onChange={set('announcement')} /></div>
       </div>
 
-      <h2>🖼️ Texto da página inicial</h2>
+      <h2> Texto da página inicial</h2>
       <p className="muted small" style={{ marginTop: 0 }}>Aparece no topo <b>somente quando não houver banner</b> cadastrado em Marketing → Banners.</p>
       <div className="form-grid">
         <div className="field span-2"><label>Título</label><input value={s.heroTitle} onChange={set('heroTitle')} /></div>
         <div className="field span-2"><label>Subtítulo</label><input value={s.heroSubtitle} onChange={set('heroSubtitle')} /></div>
       </div>
 
-      <h2>💬 WhatsApp e pagamento</h2>
+      <h2> WhatsApp e pagamento</h2>
       <div className="form-grid">
         <div className="field"><label>WhatsApp da loja (com DDD)</label><input inputMode="tel" placeholder="14 99999-9999" value={s.whatsapp} onChange={set('whatsapp')} /></div>
         <div className="field"><label>Chave PIX</label><input value={s.pixKey} onChange={set('pixKey')} /></div>
@@ -55,7 +55,7 @@ export default function SettingsForm({ initial, defaultTemplate, variables }: { 
         </div>
       </div>
 
-      <h2>📍 Contato</h2>
+      <h2> Contato</h2>
       <div className="form-grid">
         <div className="field"><label>Instagram (sem @)</label><input value={s.instagram} onChange={set('instagram')} /></div>
         <div className="field"><label>Telefone</label><input value={s.phone} onChange={set('phone')} /></div>

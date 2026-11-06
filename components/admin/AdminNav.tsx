@@ -4,10 +4,10 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const GROUPS = [
-  { title: 'Vendas', links: [{ href: '/admin', label: '📊 Dashboard' }, { href: '/admin/pedidos', label: '🧾 Pedidos' }] },
-  { title: 'Catálogo', links: [{ href: '/admin/produtos', label: '🌷 Produtos' }, { href: '/admin/categorias', label: '🗂️ Categorias' }] },
-  { title: 'Marketing', links: [{ href: '/admin/banners', label: '🖼️ Banners' }, { href: '/admin/promocoes', label: '🏷️ Promoções' }, { href: '/admin/cupons', label: '🎟️ Cupons' }] },
-  { title: 'Loja', links: [{ href: '/admin/entrega', label: '🚚 Entrega / Frete' }, { href: '/admin/configuracoes', label: '⚙️ Configurações' }] },
+  { title: 'Vendas', links: [{ href: '/admin', label: ' Dashboard' }, { href: '/admin/pedidos', label: ' Pedidos' }] },
+  { title: 'Catálogo', links: [{ href: '/admin/produtos', label: ' Produtos' }, { href: '/admin/categorias', label: 'Categorias' }] },
+  { title: 'Marketing', links: [{ href: '/admin/banners', label: ' Banners' }, { href: '/admin/promocoes', label: ' Promoções' }, { href: '/admin/cupons', label: ' Cupons' }] },
+  { title: 'Loja', links: [{ href: '/admin/entrega', label: ' Entrega / Frete' }, { href: '/admin/configuracoes', label: ' Configurações' }] },
 ];
 
 export default function AdminNav({ email, pending }: { email: string; pending: number }) {
@@ -31,8 +31,8 @@ export default function AdminNav({ email, pending }: { email: string; pending: n
         </div>
       ))}
       <div className="spacer" />
-      <a href="/" target="_blank" rel="noopener noreferrer">↗ Ver loja</a>
-      <button type="button" onClick={logout} title={email}>🚪 Sair</button>
+      <a href="/" target="_blank" rel="noopener noreferrer"> Ver loja</a>
+      <button type="button" onClick={logout} title={email}> Sair</button>
     </aside>
   );
 }

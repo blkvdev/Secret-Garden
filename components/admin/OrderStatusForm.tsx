@@ -40,7 +40,7 @@ export default function OrderStatusForm({ id, status, internalNotes, stockDeduct
         <>
           <button type="button" className="btn btn-success btn-block" disabled={busy}
             onClick={() => confirm('Concluir esta venda? Ela entra no faturamento e o estoque é baixado.') && send('CONFIRMADO')}>
-            ✅ Concluir venda
+             Concluir venda
           </button>
           <p className="muted small" style={{ textAlign: 'center' }}>Use quando o cliente confirmar pelo WhatsApp.</p>
         </>

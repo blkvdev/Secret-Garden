@@ -168,7 +168,7 @@ export default function CartPage() {
             </>
           ) : (
             <form onSubmit={finish}>
-              <h2 className="caps" style={{ fontSize: '.9rem', marginTop: 18 }}>📍 Entrega</h2>
+              <h2 className="caps" style={{ fontSize: '.9rem', marginTop: 18 }}> Entrega</h2>
               <div className="form-grid">
                 <div className="field span-2"><label htmlFor="name">Nome *</label><input id="name" required maxLength={80} value={form.name} onChange={set('name')} autoComplete="name" /></div>
                 <div className="field span-2"><label htmlFor="phone">Telefone (opcional)</label><input id="phone" maxLength={25} inputMode="tel" value={form.phone} onChange={set('phone')} autoComplete="tel" /></div>
@@ -185,7 +185,7 @@ export default function CartPage() {
                 <div className="field span-2"><label htmlFor="complement">Complemento</label><input id="complement" maxLength={120} placeholder="Casa azul, apto 12…" value={form.complement} onChange={set('complement')} /></div>
               </div>
               <div className="field">
-                <span>💳 Forma de pagamento *</span>
+                <span> Forma de pagamento *</span>
                 <div className="pay-options">
                   {payments.map((p) => (
                     <label key={p} className={form.payment === p ? 'on' : ''}>

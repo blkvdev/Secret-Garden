@@ -81,7 +81,7 @@ export default function ProductForm({ categories, product }: { categories: Categ
 
   return (
     <form onSubmit={save} className="panel">
-      <h2 style={{ marginTop: 0 }}>📷 Fotos</h2>
+      <h2 style={{ marginTop: 0 }}> Fotos</h2>
       <p className="muted small" style={{ marginTop: 0 }}>A primeira foto é a <b>principal</b>. JPG, PNG, WEBP ou GIF até 8 MB.</p>
       <div className="img-grid">
         {images.map((url, i) => (
@@ -104,12 +104,12 @@ export default function ProductForm({ categories, product }: { categories: Categ
         onDragLeave={() => setOver(false)}
         onDrop={(e) => { e.preventDefault(); setOver(false); addFiles(e.dataTransfer.files); }}
       >
-        {uploading ? 'Enviando imagem…' : <>📤 <b>Clique para escolher fotos</b> do computador/celular<br /><span className="small muted">ou arraste e solte aqui</span></>}
+        {uploading ? 'Enviando imagem…' : <> <b>Clique para escolher fotos</b> do computador/celular<br /><span className="small muted">ou arraste e solte aqui</span></>}
       </div>
       <input ref={addInput} type="file" accept="image/jpeg,image/png,image/webp,image/gif" multiple hidden onChange={(e) => { addFiles(e.target.files); e.target.value = ''; }} />
       <input ref={replaceInput} type="file" accept="image/jpeg,image/png,image/webp,image/gif" hidden onChange={(e) => { replaceFile(e.target.files); e.target.value = ''; }} />
 
-      <h2>📝 Informações</h2>
+      <h2> Informações</h2>
       <div className="form-grid">
         <div className="field span-2"><label>Nome *</label><input required maxLength={120} value={f.name} onChange={set('name')} /></div>
         <div className="field span-2"><label>Descrição</label><textarea rows={4} maxLength={5000} value={f.description} onChange={set('description')} /></div>
@@ -124,7 +124,7 @@ export default function ProductForm({ categories, product }: { categories: Categ
         <div className="field"><label>Estoque mínimo (alerta)</label><input type="number" min={0} value={f.minStock} onChange={set('minStock')} /></div>
       </div>
 
-      <h2>🏷️ Vitrine da página inicial</h2>
+      <h2> Vitrine da página inicial</h2>
       <div className="checks">
         <label><input type="checkbox" checked={f.active} onChange={set('active')} /> Ativo (aparece no site)</label>
         <label><input type="checkbox" checked={f.featured} onChange={set('featured')} /> Flores Únicas (destaque)</label>

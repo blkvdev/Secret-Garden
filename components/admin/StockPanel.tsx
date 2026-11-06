@@ -24,7 +24,7 @@ export default function StockPanel({ productId, stock, minStock, movements }: { 
 
   return (
     <div className="panel">
-      <h2 style={{ marginTop: 0 }}>📦 Estoque</h2>
+      <h2 style={{ marginTop: 0 }}> Estoque</h2>
       <p style={{ fontSize: '2rem', margin: '0 0 4px', fontWeight: 600, color: stock <= 0 ? 'var(--danger)' : stock <= minStock ? '#b06a00' : 'var(--leaf-dark)' }}>{stock} un.</p>
       <p className="muted small" style={{ marginTop: 0 }}>Alerta quando chegar a {minStock}. O estoque baixa quando você conclui a venda.</p>
       <form onSubmit={submit}>

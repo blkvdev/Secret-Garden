@@ -70,7 +70,7 @@ export default function BannerManager({ banners, links }: { banners: BannerRow[]
 
       {['TOPO', 'MEIO'].map((p) => (
         <div key={p} style={{ marginBottom: 26 }}>
-          <h2>{p === 'TOPO' ? '🖼️ Banner principal (topo)' : '🌿 Faixas do meio'}</h2>
+          <h2>{p === 'TOPO' ? ' Banner principal (topo)' : 'Faixas do meio'}</h2>
           {group(p).map((b) => (
             <div className="list-card" key={b.id}>
               <img src={b.imageUrl} alt="" />

@@ -13,7 +13,7 @@ export default async function PromosPage() {
     <section className="section">
       <div className="container">
         <SectionTitle as="h1" caps="Promoções" script="especiais" sub={`${promos.length} produto(s) com desconto`} />
-        {promos.length === 0 ? <p className="center muted">Nenhuma promoção no momento. Volte em breve 🌷</p> : <div className="grid">{promos.map((p) => <ProductCard key={p.id} p={p} />)}</div>}
+        {promos.length === 0 ? <p className="center muted">Nenhuma promoção no momento. Volte em breve </p> : <div className="grid">{promos.map((p) => <ProductCard key={p.id} p={p} />)}</div>}
       </div>
     </section>
   );

@@ -27,7 +27,7 @@ export default function QuickOrderActions({ id, status }: { id: number; status: 
     return (
       <div className="quick-actions">
         <button type="button" className="btn btn-sm btn-success" disabled={busy} onClick={() => change('CONFIRMADO', 'Concluir esta venda? O pedido entra no faturamento e o estoque é baixado.')}>
-          ✅ Concluir venda
+          Concluir venda
         </button>
         <button type="button" className="btn btn-sm btn-outline" disabled={busy} onClick={() => change('CANCELADO', 'Cancelar este pedido?')}>Cancelar</button>
       </div>
@@ -35,7 +35,7 @@ export default function QuickOrderActions({ id, status }: { id: number; status: 
   }
   if (status === 'CONFIRMADO' || status === 'EM_PREPARACAO' || status === 'SAIU_PARA_ENTREGA') {
     return (
-      <button type="button" className="btn btn-sm btn-outline" disabled={busy} onClick={() => change('ENTREGUE', 'Marcar como entregue?')}>📦 Entregue</button>
+      <button type="button" className="btn btn-sm btn-outline" disabled={busy} onClick={() => change('ENTREGUE', 'Marcar como entregue?')}> Entregue</button>
     );
   }
   return null;

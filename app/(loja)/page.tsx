@@ -41,10 +41,10 @@ export default async function Home() {
       )}
 
       <div className="container perks">
-        <div className="perk"><span>🌸</span>Flores frescas</div>
-        <div className="perk"><span>🚚</span>Entrega na região</div>
-        <div className="perk"><span>💬</span>Pedido pelo WhatsApp</div>
-        <div className="perk"><span>💳</span>PIX, dinheiro ou cartão</div>
+        <div className="perk"><span></span>Flores frescas</div>
+        <div className="perk"><span></span>Entrega na região</div>
+        <div className="perk"><span></span>Pedido pelo WhatsApp</div>
+        <div className="perk"><span></span>PIX, dinheiro ou cartão</div>
       </div>
 
       {featured.length > 0 && (

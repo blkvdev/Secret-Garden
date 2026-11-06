@@ -18,7 +18,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
     <section className="section">
       <div className="container">
         <SectionTitle as="h1" caps={category.name} sub={`${products.length} produto(s)`} />
-        {products.length === 0 ? <p className="center muted">Em breve novos produtos por aqui 🌱</p> : <div className="grid">{products.map((p) => <ProductCard key={p.id} p={p} />)}</div>}
+        {products.length === 0 ? <p className="center muted">Em breve novos produtos por aqui </p> : <div className="grid">{products.map((p) => <ProductCard key={p.id} p={p} />)}</div>}
       </div>
     </section>
   );

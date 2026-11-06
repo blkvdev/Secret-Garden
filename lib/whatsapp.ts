@@ -12,7 +12,7 @@ export const DEFAULT_TEMPLATE = `Olá! Gostaria de fazer um pedido 🌸
 *Frete:* {FRETE}
 *Total:* {TOTAL}
 
-📍 *ENTREGA*
+ *ENTREGA*
 *Nome:* {NOME}
 *Telefone:* {TELEFONE}
 *Cidade:* {CIDADE}
@@ -20,9 +20,9 @@ export const DEFAULT_TEMPLATE = `Olá! Gostaria de fazer um pedido 🌸
 *Endereço:* {ENDERECO}
 *Complemento:* {COMPLEMENTO}
 
-💳 *Forma de pagamento:* {PAGAMENTO}
+ *Forma de pagamento:* {PAGAMENTO}
 
-📝 *Observações:* {OBSERVACOES}
+ *Observações:* {OBSERVACOES}
 
 Gostaria de confirmar meu pedido. 😊`;
 
@@ -32,7 +32,7 @@ export const TEMPLATE_VARIABLES = [
 ];
 
 export function productLines(items: { name: string; quantity: number; unitPrice: number; subtotal: number }[]) {
-  return items.map((i) => `🌸 ${i.quantity}x ${i.name}\n   ${brl(i.unitPrice)} cada — subtotal ${brl(i.subtotal)}`).join('\n');
+  return items.map((i) => ` ${i.quantity}x ${i.name}\n   ${brl(i.unitPrice)} cada — subtotal ${brl(i.subtotal)}`).join('\n');
 }
 
 export function fillTemplate(template: string, vars: Record<string, string>) {
